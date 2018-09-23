@@ -78,13 +78,14 @@ Edit Distance
       # get first letter of each word with c
       c = [i for i in correct_spellings if i[0]=='c']
       # calculate the distance of each word with entry and link both together
-      one = [((nltk.edit_distance(entries[0], a)), a) for a in c]
+      # metric is Edit distance on 2 words with transpositions
+      one = [((nltk.edit_distance(entries[0], a, transpositions=True)), a) for a in c]
 
       i1 = [i for i in correct_spellings if i[0]=='i']
-      two = [((nltk.edit_distance(entries[1], a)), a) for a in i1]
+      two = [((nltk.edit_distance(entries[1], a, transpositions=True)), a) for a in i1]
 
       v = [i for i in correct_spellings if i[0]=='v']
-      three = [((nltk.edit_distance(entries[2], a)), a) for a in v]
+      three = [((nltk.edit_distance(entries[2], a, transpositions=True)), a) for a in v]
       
       # sort them to ascending order so shortest distance is on top.
       # extract the word only
